@@ -1,0 +1,58 @@
+package org.usfirst.frc.team1155.robot;
+import java.math.*; 
+import org.usfirst.frc.team1155.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
+public class Encoder extends Command{
+	
+	
+	double TicksPerInch = 360/(1 * Math.PI);
+	
+	double LeftEncoderDistance, RightEncoderDistance, AvgDistance;
+
+	
+	
+	@Override
+	protected void initialize(){
+		
+		Robot.hardware.leftEncoder.reset();
+		Robot.hardware.rightEncoder.reset();
+	}
+	
+	@Override
+	protected void execute(){
+		//Calculates distance traveled in inches
+		LeftEncoderDistance = Robot.hardware.leftEncoder.get()/TicksPerInch;
+		RightEncoderDistance = Robot.hardware.rightEncoder.get()/TicksPerInch;
+		AvgDistance = (LeftEncoderDistance + RightEncoderDistance)/2;
+	}
+	
+	@Override
+	protected void end(){
+		
+	}
+	
+	//All Distance is calculated is in Inches
+	public double DistanceOfLeftEncoder(){
+		return LeftEncoderDistance;
+	}
+	
+	public double DistanceOfRightEncoder(){
+		return RightEncoderDistance;
+	}
+	
+	public double getAvgDistanceTraveled(){
+		return AvgDistance;
+	}
+
+	@Override
+	protected boolean isFinished() {
+		
+		return false;
+	}
+
+	@Override
+	protected void interrupted() {
+		
+		
+	}
+}
