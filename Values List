@@ -1,0 +1,10 @@
+package org.usfirst.frc.team1155.robot;
+
+public class PrintValues {
+public static void main(String [] args){
+	System.out.println(FrontRightTalon);
+	System.out.println(BackRightTalon);
+	System.out.println(FrontLeftTalon);
+	System.out.println(BackLeftTalon);
+}
+}
